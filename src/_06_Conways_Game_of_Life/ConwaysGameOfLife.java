@@ -16,7 +16,7 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
 
     public static final int WIDTH = 500;
     public static final int HEIGHT = 500;
-    public static final int CELLS_PER_ROW = 200;
+    public static final int CELLS_PER_ROW = 20;
 
     private JFrame window;
     private JPanel inputPanel;

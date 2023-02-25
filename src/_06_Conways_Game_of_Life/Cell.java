@@ -21,6 +21,8 @@ public class Cell implements Drawable{
      * 10. Complete the liveOrDie method
      *     It sets isAlive to true or false based on the neighbors and 
      *     the rules of the game:
+     *     
+     * 
      *
      * 1. Any live cell with fewer than two live nieghbours dies, as if caused
      * by underpopulation.
@@ -35,8 +37,21 @@ public class Cell implements Drawable{
      * as if by reproduction.
      * (source: Wikipedia) 
      */
+    
     public void liveOrDie(int numNeighbors) {
-
+    	if(isAlive && numNeighbors<2) {
+    		isAlive=false;
+    	}
+    	if(isAlive && (numNeighbors==2 || numNeighbors==3)) {
+    		isAlive=true;
+    	}
+    	if(isAlive && numNeighbors>3) {
+    		isAlive=false;
+    	}
+    	if(!isAlive && numNeighbors==3) {
+    		isAlive=true;
+    	}
+    	
     }
 
     public int getX() {

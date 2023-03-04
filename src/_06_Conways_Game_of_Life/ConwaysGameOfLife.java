@@ -105,7 +105,7 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
 			timer = new Timer(3000, this);
 			timer.start();
         }else if(e.getSource() == timer) {
-            gamePanel.favButton();
+            gamePanel.downright();
             timer.stop();
         }
     }

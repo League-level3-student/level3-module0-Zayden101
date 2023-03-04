@@ -4,12 +4,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Time;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 public class ConwaysGameOfLife extends JPanel implements ActionListener{
     private static final long serialVersionUID = 1L;
@@ -25,6 +27,8 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
     private JButton clearButton;
     private JLabel speedLabel;
     private JTextField speedField;
+    private JButton downright;
+    Timer timer;
 
     private WorldPanel gamePanel;
 
@@ -50,12 +54,16 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         speedLabel = new JLabel("delay:");
         speedField = new JTextField(5);
         speedField.setText(Integer.toString(60));
+        downright = new JButton("\u2198");
+        downright.addActionListener(this);
+
 
         inputPanel.add(startStopButton);
         inputPanel.add(speedLabel);
         inputPanel.add(speedField);
         inputPanel.add(randomizeButton);
         inputPanel.add(clearButton);
+        inputPanel.add(downright);
         add(inputPanel, BorderLayout.NORTH);
 
         gamePanel = new WorldPanel(WIDTH, HEIGHT, CELLS_PER_ROW);
@@ -93,6 +101,12 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
             gamePanel.randomizeCells();
         }else if(e.getSource() == clearButton) {
             gamePanel.clearCells();
+        }else if(e.getSource() == downright) {            
+			timer = new Timer(3000, this);
+			timer.start();
+        }else if(e.getSource() == timer) {
+            gamePanel.favButton();
+            timer.stop();
         }
     }
 }

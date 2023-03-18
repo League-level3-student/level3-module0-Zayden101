@@ -31,13 +31,11 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
     private JButton downleft;
     private JButton upright;
     private JButton upleft;
-    private JButton penta;
     
     Timer drtimer;
     Timer dltimer;
     Timer urtimer;
     Timer ultimer;
-    Timer pentatimer;
     
     private WorldPanel gamePanel;
 
@@ -71,8 +69,6 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         upright.addActionListener(this);
         upleft = new JButton("\u2196");
         upleft.addActionListener(this);
-        penta = new JButton("\u16F0");
-        penta.addActionListener(this);
         
         inputPanel.add(startStopButton);
         inputPanel.add(speedLabel);
@@ -83,7 +79,6 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         inputPanel.add(downleft);
         inputPanel.add(upright);
         inputPanel.add(upleft);
-        inputPanel.add(penta);
 
         add(inputPanel, BorderLayout.NORTH);
 
@@ -123,35 +118,29 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         }else if(e.getSource() == clearButton) {
             gamePanel.clearCells();
         }else if(e.getSource() == downright) {            
-			drtimer = new Timer(3000, this);
+			drtimer = new Timer(2000, this);
 			drtimer.start();
         }else if(e.getSource() == drtimer) {
             gamePanel.downright();
             drtimer.stop();
         }else if(e.getSource() == downleft) {            
-			dltimer = new Timer(3000, this);
+			dltimer = new Timer(2000, this);
 			dltimer.start();
         }else if(e.getSource() == dltimer) {
     		gamePanel.downleft();
     		dltimer.stop();
     	}else if(e.getSource() == upright) {            
-			urtimer = new Timer(3000, this);
+			urtimer = new Timer(2000, this);
 			urtimer.start();
         }else if(e.getSource() == urtimer) {
     		gamePanel.upright();
     		urtimer.stop();
     	}else if(e.getSource() == upleft) {            
-			ultimer = new Timer(3000, this);
+			ultimer = new Timer(2000, this);
 			ultimer.start();
         }else if(e.getSource() == ultimer) {
     		gamePanel.upleft();
     		ultimer.stop();
-        }else if(e.getSource() == penta) {            
-			pentatimer = new Timer(3000, this);
-			pentatimer.start();
-        }else if(e.getSource() == pentatimer) {
-    		gamePanel.upleft();
-    		pentatimer.stop();
         }
     }
 }

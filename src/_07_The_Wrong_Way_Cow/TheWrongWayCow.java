@@ -54,6 +54,93 @@ public class TheWrongWayCow {
         // Fill in the code to return the [col, row] coordinate position of the
         // head (letter 'c') of the wrong way cow!
         
+    	int up = 0;
+    	int down = 0;
+    	int left = 0;
+    	int right = 0;
+
+    	
+    	for (int c = 0; c < field.length; c++) {
+    		for (int r = 0; r < field[0].length; r++) {
+    			
+    		if(field[c][r] == 'c') {
+    			up+=checkUp(field,c,r);
+    		}
+    			
+    		if(field[c][r] == 'c') {
+    			down+=checkDown(field,c,r);
+    		}
+
+    		if(field[c][r] == 'c') {
+    			up+=checkLeft(field,c,r);
+    		}
+    			
+    		if(field[c][r] == 'c') {
+    			down+=checkRight(field,c,r);
+    		}
+    		
+    		}
+    	}	
+    					
+    	
+    	
         return null;
     }
+
+	private static int checkDown(char[][] field, int c, int r) {
+
+		if(r>field[0].length-3) {
+			return 0;
+		}
+		
+		if(field[c][r+1] == 'o' && field[c][r+2] == 'w') {
+
+		return 1;
+		}
+			return 0;
+	}
+
+	
+
+	private static int checkUp(char[][] field, int c, int r) {
+
+		if(r<2) {
+			return 0;
+		}
+		
+		if(field[c][r-1] == 'o' && field[c][r-2] == 'w') {
+
+		return 1;
+		}
+			return 0;
+	}
+	
+	private static int checkLeft(char[][] field, int c, int r) {
+
+		if(c>field[0].length-3) {
+			return 0;
+		}
+		
+		if(field[c+1][r] == 'o' && field[c+2][r] == 'w') {
+
+		return 1;
+		}
+			return 0;
+	}
+
+	
+
+	private static int checkRight(char[][] field, int c, int r) {
+
+		if(c<2) {
+			return 0;
+		}
+		
+		if(field[c-1][r] == 'o' && field[c-2][r] == 'w') {
+
+		return 1;
+		}
+			return 0;
+	}
+
 }

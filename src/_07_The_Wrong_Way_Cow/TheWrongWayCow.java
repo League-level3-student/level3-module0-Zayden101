@@ -60,44 +60,131 @@ public class TheWrongWayCow {
     	int right = 0;
 
     	
-    	for (int c = 0; c < field.length; c++) {
-    		for (int r = 0; r < field[0].length; r++) {
+    	for (int c = 0; c < field[0].length; c++) {
+    		for (int r = 0; r < field.length; r++) {
     			
-    		if(field[c][r] == 'c') {
+    		if(field[r][c] == 'c') {
     			up+=checkUp(field,c,r);
-    		}
-    			
-    		if(field[c][r] == 'c') {
-    			down+=checkDown(field,c,r);
-    		}
-
-    		if(field[c][r] == 'c') {
-    			up+=checkLeft(field,c,r);
-    		}
-    			
-    		if(field[c][r] == 'c') {
-    			down+=checkRight(field,c,r);
-    		}
     		
+    			down+=checkDown(field,c,r);
+
+    			left+=checkLeft(field,c,r);
+    		
+    			right+=checkRight(field,c,r);
+    		}
     		}
     	}	
     					
+    	System.out.println("up:"+up+" down:"+down+" left:"+left+" right:"+right);
+    	
+    	
+    	if(down==1) {
+    		return findWWCDown(field);
+    	}
+    	if(up==1) {
+    		return findWWCUp(field);
+    	}
+    	if(left==1) {
+    		return findWWCLeft(field);
+    	}
+    	if(right==1) {
+    		return findWWCRight(field);
+    	}
+    	
+//    	System.out.println("0,0: " + field[0][0] + " 0,1: " + field[0][1]);
+    	
     	
     	
         return null;
     }
 
-	private static int checkDown(char[][] field, int c, int r) {
+    
+    
+    
+	private static int[] findWWCDown(final char[][] field) {
+    	
+		for (int c = 0; c < field[0].length; c++) {
+    		for (int r = 0; r < field.length; r++) {
+    			
+    		if(field[r][c] == 'c' && checkDown(field,c,r) == 1) {
+    			int [] ar = {c,r};
+    			return ar;
+    		}
+    		
+    		}
+    	}
+		
+		return null;
+	}
+	
+	
+private static int[] findWWCUp(final char[][] field) {
+    	
+		for (int c = 0; c < field[0].length; c++) {
+    		for (int r = 0; r < field.length; r++) {
+    			
+    		if(field[r][c] == 'c' && checkUp(field,c,r) == 1) {
+    			int [] ar = {c,r};
+    			return ar;
+    		}
+    		
+    		}
+    	}
+		
+		return null;
+	}
 
-		if(r>field[0].length-3) {
+
+private static int[] findWWCLeft(final char[][] field) {
+	
+	for (int c = 0; c < field[0].length; c++) {
+		for (int r = 0; r < field.length; r++) {
+			
+		if(field[r][c] == 'c' && checkLeft(field,c,r) == 1) {
+			int [] ar = {c,r};
+			return ar;
+		}
+		
+		}
+	}
+	
+	return null;
+}
+
+
+private static int[] findWWCRight(final char[][] field) {
+	
+	for (int c = 0; c < field[0].length; c++) {
+		for (int r = 0; r < field.length; r++) {
+			
+		if(field[r][c] == 'c' && checkRight(field,c,r) == 1) {
+			int [] ar = {c,r};
+			return ar;
+		}
+		
+		}
+	}
+	
+	return null;
+}
+
+
+	
+
+	private static int checkDown(char[][] field, int c, int r) {
+try {
+		if(r>field.length-3) {
 			return 0;
 		}
 		
-		if(field[c][r+1] == 'o' && field[c][r+2] == 'w') {
+			if(field[r+1][c] == 'o' && field[r+2][c] == 'w') {
 
 		return 1;
 		}
-			return 0;
+			
+}catch(Exception e) {
+	System.out.println(e);
+}return 0;
 	}
 
 	
@@ -108,7 +195,7 @@ public class TheWrongWayCow {
 			return 0;
 		}
 		
-		if(field[c][r-1] == 'o' && field[c][r-2] == 'w') {
+		if(field[r-1][c] == 'o' && field[r-2][c] == 'w') {
 
 		return 1;
 		}
@@ -117,11 +204,11 @@ public class TheWrongWayCow {
 	
 	private static int checkLeft(char[][] field, int c, int r) {
 
-		if(c>field[0].length-3) {
+		
+		if(c<2) {
 			return 0;
 		}
-		
-		if(field[c+1][r] == 'o' && field[c+2][r] == 'w') {
+		if(field[r][c-1] == 'o' && field[r][c-2] == 'w') {
 
 		return 1;
 		}
@@ -132,13 +219,14 @@ public class TheWrongWayCow {
 
 	private static int checkRight(char[][] field, int c, int r) {
 
-		if(c<2) {
+		if(c>field[0].length-3) {
 			return 0;
+			
 		}
-		
-		if(field[c-1][r] == 'o' && field[c-2][r] == 'w') {
+		if(field[r][c+1] == 'o' && field[r][c+2] == 'w') {
 
-		return 1;
+
+			return 1;
 		}
 			return 0;
 	}

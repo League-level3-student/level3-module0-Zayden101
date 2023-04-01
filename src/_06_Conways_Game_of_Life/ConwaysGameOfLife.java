@@ -23,7 +23,8 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
     private JFrame window;
     private JPanel inputPanel;
     private JButton startStopButton;
-    private JButton randomizeButton;
+    //private JButton randomizeButton;
+    private JButton fillButton;
     private JButton clearButton;
     private JLabel speedLabel;
     private JTextField speedField;
@@ -32,10 +33,16 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
     private JButton upright;
     private JButton upleft;
     
+    private JButton colorButton;
+    private JButton a;
+    
     Timer drtimer;
     Timer dltimer;
     Timer urtimer;
     Timer ultimer;
+    
+    Timer atimer;
+
     
     private WorldPanel gamePanel;
 
@@ -54,8 +61,8 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         inputPanel = new JPanel();
         startStopButton = new JButton("START");
         startStopButton.addActionListener(this);
-        randomizeButton = new JButton("RANDOMIZE");
-        randomizeButton.addActionListener(this);
+        //randomizeButton = new JButton("RANDOMIZE");
+        //randomizeButton.addActionListener(this);
         clearButton = new JButton("CLEAR");
         clearButton.addActionListener(this);
         speedLabel = new JLabel("delay:");
@@ -69,16 +76,29 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         upright.addActionListener(this);
         upleft = new JButton("\u2196");
         upleft.addActionListener(this);
+        fillButton = new JButton("FILL");
+        fillButton.addActionListener(this);
+        a = new JButton("\u1396");
+        a.addActionListener(this);
+
+        
+        colorButton = new JButton("Color");
+        colorButton.addActionListener(this);
+
         
         inputPanel.add(startStopButton);
         inputPanel.add(speedLabel);
         inputPanel.add(speedField);
-        inputPanel.add(randomizeButton);
+        //inputPanel.add(randomizeButton);
+        inputPanel.add(fillButton);
         inputPanel.add(clearButton);
         inputPanel.add(downright);
         inputPanel.add(downleft);
         inputPanel.add(upright);
         inputPanel.add(upleft);
+        
+        inputPanel.add(colorButton);
+        inputPanel.add(a);
 
         add(inputPanel, BorderLayout.NORTH);
 
@@ -113,8 +133,8 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
                 gamePanel.stopAnimation();
                 startStopButton.setText("START");
             }
-        }else if(e.getSource() == randomizeButton) {
-            gamePanel.randomizeCells();
+       // }else if(e.getSource() == randomizeButton) {
+       //     gamePanel.randomizeCells();
         }else if(e.getSource() == clearButton) {
             gamePanel.clearCells();
         }else if(e.getSource() == downright) {            
@@ -141,6 +161,20 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         }else if(e.getSource() == ultimer) {
     		gamePanel.upleft();
     		ultimer.stop();
+        }else if(e.getSource() == fillButton) {
+    		gamePanel.fillButton();
+        }
+        
+        else if(e.getSource() == colorButton) {
+        	gamePanel.fillButton();
+        }
+        
+        else if(e.getSource() == a) {            
+			atimer = new Timer(2000, this);
+			atimer.start();
+        }else if(e.getSource() == atimer) {
+    		gamePanel.a();
+    		atimer.stop();
         }
     }
 }

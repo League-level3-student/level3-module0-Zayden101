@@ -85,15 +85,15 @@ public class Cell implements Drawable{
         	
         	
         	
-        	/* //CMY
+        	/* //CYM
     		Random ran3 = new Random();
 			int col3 = ran3.nextInt(3);
 			if(col3==0) {
 	            g.setColor(Color.CYAN);
 			}else if(col3==1) {
-	            g.setColor(Color.MAGENTA);
-			}else if(col3==2) {
 	            g.setColor(Color.YELLOW);
+			}else if(col3==2) {
+	            g.setColor(Color.MEGENTA);
 			}
 			g.fillRect(x, y, cellSize, cellSize);
         	*/
@@ -121,7 +121,7 @@ public class Cell implements Drawable{
         	
         	
         	
-            /* //DOUBLE *fix*
+            /* //DOUBLE *broken*
             g.setColor(Color.BLUE);
             g.fillRect(x, y, cellSize, cellSize);
             g.setColor(Color.RED);

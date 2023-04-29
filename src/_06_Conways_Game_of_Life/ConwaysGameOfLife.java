@@ -170,10 +170,12 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         }
         
         else if(e.getSource() == a) {  
-    		gamePanel.a();
-			atimer = new Timer(2000, this);
-			atimer.start();
+			atimer = new Timer(3000, this);
+    		gamePanel.choice();
+
+        	atimer.start();
         }else if(e.getSource() == atimer) {
+    		gamePanel.a();
     		atimer.stop();
         }
     }

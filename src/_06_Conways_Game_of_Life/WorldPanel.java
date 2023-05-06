@@ -21,7 +21,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     private Timer timer;
 
     int sha = -1;
-    
+    Color color = Color.blue;
     // 1. Create a 2D array of Cells. Do not initialize it.
 
     Cell[][] cellArray;
@@ -260,6 +260,8 @@ for (int i = 0; i < cellArray.length; i++) {
     				cellArray[i+celcol][j+celrow].isAlive = false;
     			}else {
     				cellArray[i+celcol][j+celrow].isAlive = true;
+    				cellArray[i+celcol][j+celrow].color = color;
+
     			}
     					}
     	}
@@ -786,7 +788,7 @@ if(sha==8) {
 public void choice() {
 	
 	int cho = JOptionPane.showOptionDialog(null, "Choose one", "Title", 0, JOptionPane.INFORMATION_MESSAGE, null,
-    new String[] { "1", "2", "3", "//", "||", "\u2322", "\u2264", "\u2245", "\u2563"}, null);
+    new String[] { "1", "/u10133", "/u2746", "//", "||", "6", "\\u2B1F", "8", "\u2563"}, null);
 
 	if (cho==0) {
 		sha=0;}
@@ -820,6 +822,60 @@ public void choice() {
 	
 }
 
+public void colorChoice() {
+	
+	int cho = JOptionPane.showOptionDialog(null, "Choose one", "Title", 0, JOptionPane.INFORMATION_MESSAGE, null,
+    new String[] { "BLUE", "RED", "GREEN", "", "", "", "", "", ""}, null);
+
+	if (cho==0) {
+		color = Color.blue;
+		for (int i = 0; i < cellArray.length; i++) {
+    		for (int j = 0; j < cellArray.length; j++) {
+    			cellArray[i][j].color = color;
+    		}
+    	}
+	}
+	
+	if (cho==1) {
+		color = Color.red;
+		for (int i = 0; i < cellArray.length; i++) {
+    		for (int j = 0; j < cellArray.length; j++) {
+    			cellArray[i][j].color = color;
+    		}
+    	}
+	}
+	
+	if (cho==2) {
+		color = Color.green;
+		for (int i = 0; i < cellArray.length; i++) {
+    		for (int j = 0; j < cellArray.length; j++) {
+    			cellArray[i][j].color = color;
+    		}
+    	}
+	}
+	
+//	if (cho==3) {
+//		sha=3;}
+//	
+//	if (cho==4) {
+//		sha=4;}
+//	
+//	if (cho==5) {
+//		sha=5;}
+//	
+//	if (cho==6) {
+//		sha=6;}
+//	
+//	if (cho==7) {
+//		sha=7;}
+//	
+//	if (cho==8) {
+//		sha=8;}
+//	
+//	if (cho==9) {
+//		sha=9;}
+	
+}
 
 
 

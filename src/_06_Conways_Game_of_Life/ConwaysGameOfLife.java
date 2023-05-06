@@ -24,7 +24,7 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
     private JPanel inputPanel;
     private JButton startStopButton;
     private JButton randomizeButton;
-    //private JButton fillButton;
+//    private JButton fillButton;
     private JButton clearButton;
     private JLabel speedLabel;
     private JTextField speedField;
@@ -76,8 +76,8 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         upright.addActionListener(this);
         upleft = new JButton("\u2196");
         upleft.addActionListener(this);
-        //fillButton = new JButton("FILL");
-        //fillButton.addActionListener(this);
+//        fillButton = new JButton("FILL");
+//        fillButton.addActionListener(this);
         a = new JButton("\u1396");
         a.addActionListener(this);
 
@@ -90,7 +90,7 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         inputPanel.add(speedLabel);
         inputPanel.add(speedField);
         inputPanel.add(randomizeButton);
-        //inputPanel.add(fillButton);
+//        inputPanel.add(fillButton);
         inputPanel.add(clearButton);
         inputPanel.add(downright);
         inputPanel.add(downleft);
@@ -161,12 +161,12 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
         }else if(e.getSource() == ultimer) {
     		gamePanel.upleft();
     		ultimer.stop();
-       // }else if(e.getSource() == fillButton) {
-    	//	gamePanel.fillButton();
+//        }else if(e.getSource() == fillButton) {
+//    		gamePanel.fillButton();
         }
         
         else if(e.getSource() == colorButton) {
-        	gamePanel.fillButton();
+    		gamePanel.colorChoice();
         }
         
         else if(e.getSource() == a) {  

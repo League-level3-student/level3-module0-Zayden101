@@ -11,6 +11,7 @@ public class Cell implements Drawable{
 
     private int cellSize;
 
+    Color color;
 
     public Cell(int x, int y, int size) {
         this.x = x;
@@ -126,7 +127,7 @@ public class Cell implements Drawable{
             g.fillRect(x, y, cellSize, cellSize);
             g.setColor(Color.RED);
             g.fillRect(y, x, cellSize, cellSize);
-			*/           
+			*/         
             
         	
         	
@@ -148,7 +149,7 @@ public class Cell implements Drawable{
         	*/
             
         	
-           g.setColor(Color.BLUE);
+           g.setColor(color);
             g.fillRect(x, y, cellSize, cellSize);
 
 
@@ -162,7 +163,7 @@ public class Cell implements Drawable{
          //BORDERED
         g.setColor(Color.BLACK);
         g.drawRect(x, y, cellSize, cellSize);
-        
+    g.setColor(color);
         
         /* //BORDERLESS
         g.drawRect(x, y, cellSize, cellSize);
